@@ -1,6 +1,6 @@
-# za-qq-pay
+# Vue project seed
 
-> QQ钱包产品
+> vue 脚手架 种子项目
 
 ## Build Setup
 

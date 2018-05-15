@@ -1,0 +1,70 @@
+
+@mixin border($top:1, $right:1, $bottom:1, $left:1, $color:#ebebf0) {
+  background-image:linear-gradient(180deg, $color, $color 50%, transparent 50%), 
+                  linear-gradient(90deg, $color, $color 50%, transparent 50%), 
+                  linear-gradient(0deg, $color, $color 50%, transparent 50%),
+                  linear-gradient(90deg, $color, $color 50%, transparent 50%);
+  background-size: 100% $top + px, $right + px 100%, 100% $bottom + px, $left + px 100%;
+  background-repeat: no-repeat;
+  background-position: top, right top, bottom, left top ;
+}
+
+@mixin borderTop($top:1, $color:#ebebf0) {
+  @include border($top, 0, 0, 0, $color);
+}
+@mixin borderRight($right:1, $color:#ebebf0) {
+  @include border(0, $right, 0, 0, $color);
+}
+@mixin borderBottom($bottom:1, $color:#ebebf0) {
+  @include border(0, 0, $bottom, 0, $color);
+}
+@mixin borderLeft($left:1, $color:#ebebf0) {
+  @include border(0, 0, 0, $left, $color);
+}
+@mixin borderColor($color:#ebebf0) {
+  @include border(1, 1, 1, 1, $color);
+} 
+
+@mixin borderRadius($width:1,$style:solid,$color:#ebebf0,$radius:2px,$borderTopWidth:1,$borderLeftWidth:1,$borderRightWidth:1,$borderBottomWidth:1) {
+  position:relative;
+    &:after{
+       left:0px;
+       top:0px;
+       right:-100%;
+       bottom:-100%;
+       border-radius:$radius;
+       border-width: $width + px;
+       border-style: $style;
+       border-color: $color;
+       border-top-width: $borderTopWidth;
+       border-bottom-width: $borderBottomWidth;
+       border-left-width: $borderLeftWidth;
+       border-right-width: $borderRightWidth;
+       position:absolute;
+       display:block;
+       -webkit-transform:scale(0.5);
+       -webkit-transform-origin:0% 0%;
+       content:'';
+    }
+}
+
+@mixin images($url:'images/check.png',$repeat:no-repeat,$size:auto) {
+    background-image:url($url);
+    background-repeat:$repeat;
+    -webkit-background-size:$size;
+    background-size:$size;
+}
+
+@mixin ellipsis{
+  white-space: nowrap;text-overflow: ellipsis;overflow:hidden;
+}
+
+@function r($px, $isFixed:true) {
+  @if $px != 0 {
+    @return if($isFixed, $px / $ratio + 0.01, $px / $ratio) / $browser-default-font-size * 1rem;
+  } 
+  @else
+  {
+    @return 0;
+  }
+}

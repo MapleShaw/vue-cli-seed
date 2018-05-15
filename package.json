@@ -1,8 +1,8 @@
 {
-  "name": "za-qq-pay",
+  "name": "project-name",
   "version": "1.0.0",
-  "description": "QQ钱包产品",
-  "author": "xiaodingge <xiaodingge@zhongan.com>",
+  "description": "project-desc",
+  "author": "mapleshaw",
   "private": true,
   "scripts": {
     "dev": "node build/devServer.js",
